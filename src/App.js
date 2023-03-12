@@ -3,6 +3,10 @@ import AddUser from './components/Users/AddUser';
 import UsersList from './components/Users/UsersLists';
 import {nanoid} from 'nanoid';
 
+/**
+ * 
+ * @returns AddUser and the UsersList component, App is the lowest common ancestor. Lifting state up
+ */
 function App() {
   const [userList, setUserList] = useState([]);
   
