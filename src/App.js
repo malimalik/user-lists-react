@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import AddUser from './components/Users/AddUser';
 import UsersList from './components/Users/UsersLists';
+import ErrorModel from './components/UI/ErrorModal';
 import {nanoid} from 'nanoid';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <div>
       <AddUser onAddUser={addUserHandler}/>
       <UsersList users = {userList}/>
+      <ErrorModel errorMessage={"Hello"}></ErrorModel>
     </div>
   );
 }

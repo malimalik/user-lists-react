@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Card from '../UI/Card'
+import ErrorModel from '../UI/ErrorModal';
 import classes from '../Users/AddUser.module.css';
 import Button from '../UI/Button';
 
@@ -16,6 +17,11 @@ import Button from '../UI/Button';
 const AddUser = (props) => {
     const [name, setName] = useState([]);
     const [age, setAge] = useState([]);
+    const nameError = "The name field cannot be empty!." 
+    const ageError = {
+        ageEmptyError : "The age field cannot be empty!.", 
+        ageInvalidError : "Please enter a valid age, i.e. < 0."
+    }
     
     const addUserHandler = (event) => {
         event.preventDefault();
@@ -23,12 +29,22 @@ const AddUser = (props) => {
         // of AddUser
         props.onAddUser(name, age);
         //validation to ensure none of the input fields are empty
-        if (name.trim().length === 0 || age.trim().length === 0 || +age < 1) {
+        if (name.trim().length === 0 ) {
+            <ErrorModel errorMessage={nameError}/>    
+            return;
+        } 
+        if (age.trim().length === 0) {
+            <ErrorModel errorMessage={ageError.ageEmptyError}/>    
+            return;
+        }
+        if (+age < 1) {
+            <ErrorModel errorMessage={ageError.ageInvalidError}/>    
             return;
         }
         setName('');
         setAge('');
     };
+    
 
     const userNameChangeHandler = (event) => {
         setName(event.target.value);
