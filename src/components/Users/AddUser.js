@@ -14,9 +14,6 @@ const AddUser = (props) => {
         if (name.trim().length === 0 || age.trim().length === 0 || +age < 1) {
             return;
         }
-
-
-
         setName('');
         setAge('');
     };
