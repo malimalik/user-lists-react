@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../UI/Card";
-import classes from '../Users/UsersList.modules.css'
+import classes from '../Users/UsersList.module.css'
 
 /**
  * 
