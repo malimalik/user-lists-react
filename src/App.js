@@ -12,7 +12,10 @@ function App() {
   
   const addUserHandler = (name, age) => {
     setUserList((currUsers) => {
-        return [...currUsers, {id: nanoid(), name: name, age: age}];
+        return [...currUsers, 
+          {id: nanoid(), 
+          name: name, 
+          age: age}];
     });
   };
   

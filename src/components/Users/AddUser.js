@@ -3,10 +3,6 @@ import Card from '../UI/Card'
 import ErrorModal from '../UI/ErrorModal';
 import classes from '../Users/AddUser.module.css';
 import Button from '../UI/Button';
-
-
-
-
 /**
  * This component is solely responsible for collecting the data from the name and the age field. 
  * It also performs the validation for the input fields, name and age.
@@ -27,13 +23,13 @@ const AddUser = (props) => {
     const addUserHandler = (event) => {
         event.preventDefault();
         //because addUserHandler is a nested function, it can access the arguments
-        // of AddUser
-        //validation to ensure none of the input fields are empty
-        if (name.trim().length === 0 || age.trim().length === 0 ) {
+        // of AddUser validation to ensure none of the input fields are empty
+        if (name.trim().length === 0 || age.trim().length === 0) {
             setError({
                 title: 'Invalid input', 
                 message: nameError
             });
+
             return;      
         } 
         if (+age < 1) {
@@ -41,8 +37,10 @@ const AddUser = (props) => {
                 title : "Invalid age", 
                 message: ageError.ageInvalidError
             });
+            
             return;
         }
+
         props.onAddUser(name, age);
         setName('');
         setAge('');
