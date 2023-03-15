@@ -1,4 +1,7 @@
 import React from "react";
+import Card from "./Card";
+import Button from "./Button";
+import classes from "../UI/ErrorModal.module.css";
 
 const ModalOverlay = (props) => {
   return (
