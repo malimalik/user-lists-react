@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
 import classes from "../Users/AddUser.module.css";
 import Button from "../UI/Button";
-import Wrapper from "../Helpers/Wrapper";
+
 /**
  * This component is solely responsible for collecting the data from the name and the age field.
  * It also performs the validation for the input fields, name and age.
@@ -12,6 +12,8 @@ import Wrapper from "../Helpers/Wrapper";
  * @returns void
  */
 const AddUser = (props) => {
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [error, setError] = useState("");
@@ -23,6 +25,7 @@ const AddUser = (props) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    console.log(nameInputRef.current.value);
     //because addUserHandler is a nested function, it can access the arguments
     // of AddUser validation to ensure none of the input fields are empty
     if (name.trim().length === 0 || age.trim().length === 0) {
@@ -78,6 +81,7 @@ const AddUser = (props) => {
             type="text"
             value={name}
             onChange={userNameChangeHandler}
+            ref={nameInputRef}
           />
           <label htmlFor="age">Age (Years)</label>
           <input
@@ -85,6 +89,7 @@ const AddUser = (props) => {
             type="number"
             value={age}
             onChange={ageChangeHandler}
+            ref={ageInputRef}
           />
           <Button type="submit"> Add User</Button>
         </form>
